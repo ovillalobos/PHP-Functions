@@ -71,4 +71,41 @@ function fnd_get_time( $mode ){ /* 0/+5/+10/... */
 
 	return $return_time;
 }
+
+/****************************************************************************
+ * USED TO REVERSE ALL THE MESSAGE (STRING) WITHOUT ARRAY FUNCTIONS
+ ****************************************************************************/
+$message = 'cake pound steal';
+$message = reverseMSG( $message );
+
+function reversetMSG(){
+	function reverseMSG( $message ){
+		$new_msg = "";
+		$size_msg = strlen($message);
+		$arr_msg = array();
+		$aux_msg = "";
+		$j = 0;
+		
+		for( $i=0 ; $i<$size_msg ; $i++ ){
+			if( $message[$i] == " " ){
+				$arr_msg[$j] = $aux_msg;
+				$j++;
+				$aux_msg = "";
+			} else {
+				$aux_msg .= $message[$i];
+			}
+		}
+		$arr_msg[$j] = $aux_msg;
+		$max = sizeof($arr_msg)-1;
+		$aux_msg = "";
+
+		for( $i=$max ; $i>=0 ; $i-- ){
+			$aux_msg .= $arr_msg[$i] . " ";
+		}
+
+		return $aux_msg;
+	}
+}
+
+print( $message );
 ?>
